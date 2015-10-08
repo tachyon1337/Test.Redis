@@ -1,0 +1,23 @@
+﻿@model IEnumerable<Test.Redis.Models.SampleModel>
+@{
+    ViewBag.Title = "ViewSample";
+    int index = 0;
+}
+ 
+<h2>View Sample Models</h2>
+<a href="/Home/TestSample" style="margin-right:2em;">Generate Another Sample</a>
+<a href="/Home/QueueSample" style="margin-right:2em;">Generate Queued Sample</a>
+<br /><br />
+<h4>Current Samples</h4>
+@foreach (var m in Model)
+{
+    index++;
+    <span>@index.ToString()) </span>
+    @m.Id<br />
+    @m.Name<br />
+    @m.CurrentDate.ToShortDateString()<br /><br />
+    <a href="/Home/EditSample/@m.Id" style="margin-right:2em;">Edit</a>
+    <a href="/Home/DeleteSample/@m.Id">Delete</a>
+
+   <br /><br />
+}
