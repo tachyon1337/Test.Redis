@@ -81,9 +81,22 @@ namespace Test.Redis.Controllers
                 Name = "Jim Carey",
                 CurrentDate = DateTime.Now
             };
+
             _service.Add(sampleModel);
 
+           /*using (_unitOfWork)
+           {
+                _service.Add(sampleModel);
+           }*/
+
+
             return View();
+        }
+
+        protected override void Dispose(bool disposing)
+        {
+            _unitOfWork.Dispose();
+            base.Dispose(disposing);
         }
     }
 }
